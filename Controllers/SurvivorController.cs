@@ -8,30 +8,15 @@ namespace Robot.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class HomeController : ControllerBase
+    public class SurvivorController : ControllerBase
     {
         private readonly ISurvivorSerivces _SurvivorSerivces1;
 
-        public HomeController(ISurvivorSerivces SurvivorSerivces)
+        public SurvivorController(ISurvivorSerivces SurvivorSerivces)
         {
             _SurvivorSerivces1 = SurvivorSerivces;
         }
 
-        //// GET: api/<HomeController>
-        //[HttpGet]
-        //public IEnumerable<string> Get()
-        //{
-        //    return new string[] { "value1", "value2" };
-        //}
-
-        //// GET api/<HomeController>/5
-        //[HttpGet("{id}")]
-        //public string Get(int id)
-        //{
-        //    return "value";
-        //}
-
-        // POST api/<HomeController>
         [HttpPost]
         public string Post(Survivor survivor)
         {           
@@ -52,10 +37,5 @@ namespace Robot.Controllers
             return "Location not updated";
         }
 
-        // DELETE api/<HomeController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
     }
 }

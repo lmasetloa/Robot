@@ -59,7 +59,7 @@ namespace Robot.Database
                         {
                             while(reader.Read())
                             {
-                                userID = Convert.ToInt32(reader["id"]);
+                                userID = Convert.ToInt32(reader["userid"]);
                             }
                         }
                     }
@@ -129,6 +129,41 @@ namespace Robot.Database
                 Log.Error($"failed to add inventory of resources {ex.Message}");
             }
           
+        }
+
+       public string AddZombi(int ReporterID,int newZombiID)
+        {
+            try 
+            {
+                var message = "";
+                using (SqlConnection connection = new SqlConnection(Config.AppSettings.DefaultConnection))
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand("[dbo].[AddZombi]   @ReporterID,@newZombiID", connection))
+                    {
+                        command.Parameters.AddWithValue("@ReporterID", ReporterID);
+                        command.Parameters.AddWithValue("@newZombiID", newZombiID);
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                message = reader["Results"].ToString();
+                            }
+                        }
+                    }
+                }
+                return message;
+            }
+            catch(Exception ex)
+            {
+                Log.Error($"having problem proccessing your details{ex}");
+                return ex.ToString();
+            }
+
+           
+
+
         }
     }
 }

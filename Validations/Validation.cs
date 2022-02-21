@@ -18,5 +18,12 @@ namespace Robot.Validations
             
             return false;
         }
+
+        public bool vadilateReporter(int repID,int zomID)
+        {
+            if(repID != zomID)
+                return true;
+            return false;
+        }
     }
 }

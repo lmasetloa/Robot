@@ -7,5 +7,6 @@ namespace Robot.Database
         public bool findUserByID(string ID);
         public string createSurvior(Survivor survivor);
         public bool updateLocation(string Id, Location location);
+        public string AddZombi(int ReporterID, int newZombiID);
     }
 }
