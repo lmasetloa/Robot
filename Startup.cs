@@ -42,6 +42,7 @@ namespace Robot
             services.AddTransient<ISQLQuery, SQLQuery>();
             services.AddTransient<IRobotService, RobotService>();
             services.AddTransient<IReportZombieService, ReportZombieService>();
+            services.AddTransient<IReportingService, ReportingService>();
 
         }
 
