@@ -90,9 +90,9 @@ namespace Robot.Database
                 using (SqlConnection connection = new SqlConnection(Config.AppSettings.DefaultConnection))
                 {
                     connection.Open();
-                    using (SqlCommand command = new SqlCommand("[dbo].[UpdateLocation]  @IDnumber,@Lat,@long", connection))
+                    using (SqlCommand command = new SqlCommand("[dbo].[UpdateLocation]  @UserID,@Lat,@long", connection))
                     {
-                        command.Parameters.AddWithValue("@IDnumber", Id);
+                        command.Parameters.AddWithValue("@UserID", Id);
                         command.Parameters.AddWithValue("@Lat", location.Lat);
                         command.Parameters.AddWithValue("@Long", location.Long);
 

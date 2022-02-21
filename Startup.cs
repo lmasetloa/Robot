@@ -34,10 +34,11 @@ namespace Robot
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Robot", Version = "v1" });
-            });
+            });//IRobotService
             services.AddTransient<ISurvivorSerivces, SurvivorSerivces>();
             services.AddTransient<IValidation, Validation>();
             services.AddTransient<ISQLQuery, SQLQuery>();
+            services.AddTransient<IRobotService, RobotService>();
 
         }
 
