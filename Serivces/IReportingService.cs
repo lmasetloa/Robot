@@ -6,5 +6,6 @@ namespace Robot.Serivces
     public interface IReportingService
     {
         public List<SuviviorViewModel> survivors();
+        public List<SuviviorViewModel> Nonsurvivors();
     }
 }

@@ -34,6 +34,12 @@ namespace Robot.Controllers
             return _reportingService.survivors();
         }
 
+        [HttpGet]
+        public List<SuviviorViewModel> AllNonSurvivors()
+        {
+            return _reportingService.Nonsurvivors();
+        }
+
         // GET api/<ReportingController>/5
         [HttpGet("{id}")]
         public string Get(int id)
@@ -42,21 +48,6 @@ namespace Robot.Controllers
         }
 
         // POST api/<ReportingController>
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT api/<ReportingController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<ReportingController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+      
     }
 }

@@ -43,20 +43,13 @@ namespace Robot.Serivces
                                 Robot_model = robot.model,
                                 Robot_Number = robot.serialNumber,
                                 Create_Date = robot.manufacturedDate,
-
-
-
-
-
                             };
                             data.Robot_kind = "flying robot";
                             if (robot.category == "Land")                             
                                 data.Robot_kind = "Walking robot";
                             robotData.Add(data);
 
-                        }
-
-        
+                        }        
                     }
                     else
                     {
@@ -75,10 +68,7 @@ namespace Robot.Serivces
         public List<RobotData> robots()
         {
             List<RobotData> robots = new List<RobotData>();
-           var list = CallWebAPIAsync();
-
-           
-
+           var list = CallWebAPIAsync();         
             return robots;
         }
     }

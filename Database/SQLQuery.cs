@@ -165,6 +165,62 @@ namespace Robot.Database
             return sur;
         }
 
+        public List<SuviviorViewModel> Nonsurvivors()
+        {
+            List<SuviviorViewModel> sur = new List<SuviviorViewModel>();
+
+            try
+            {
+                var UserID = "";
+                using (SqlConnection connection = new SqlConnection(Config.AppSettings.DefaultConnection))
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand("dbo].[AllNonSurvivors]", connection))
+                    {
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                SuviviorViewModel survivor = new SuviviorViewModel()
+                                {
+                                    ID = (int)reader["ID"],
+                                    Name = reader["Name"].ToString(),
+                                    Surname = reader["Surname"].ToString(),
+                                    age = int.Parse(reader["age"].ToString()),
+                                    Gender = Char.Parse(reader["Gender"].ToString()),
+                                    IDNumber = reader["IDNumber"].ToString(),
+                                    Lat = reader["Lat"].ToString(),
+                                    Long = reader["Long"].ToString()
+
+
+                                };
+                                using (SqlCommand commands = new SqlCommand($"SELECT [Resource] FROM [Survivor].[dbo].[Resources] where [UserID] = {survivor.ID}", connection))
+                                {
+                                    using (SqlDataReader readers = commands.ExecuteReader())
+                                    {
+                                        while (readers.Read())
+                                        {
+                                            survivor.list.Add(readers["Resource"].ToString());
+                                        }
+                                    }
+                                }
+                                sur.Add(survivor);
+
+                            }
+                        }
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex.Message);
+            }
+
+
+            return sur;
+        }
+
         public void AddResources(int UserID,string resource)
         {
             try

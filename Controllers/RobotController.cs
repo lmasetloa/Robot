@@ -20,8 +20,7 @@ namespace Robot.Controllers
         // GET: api/<RobotController>
         [HttpGet]
         public object Get()
-        {
-           
+        {          
             return _robotService.CallWebAPIAsync();
         }
 

@@ -20,5 +20,13 @@ namespace Robot.Serivces
 
             return survivors;
         }
+        public List<SuviviorViewModel> Nonsurvivors()
+        {
+            List<SuviviorViewModel> survivors = new List<SuviviorViewModel>();
+
+            survivors = _sQLQuery.Nonsurvivors();
+
+            return survivors;
+        }
     }
 }
