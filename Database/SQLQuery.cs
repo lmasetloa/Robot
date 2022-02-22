@@ -83,7 +83,7 @@ namespace Robot.Database
            
         }
 
-        public bool updateLocation(string Id,Location location)
+        public bool updateLocation(int Id,Location location)
         {
             try
             {
@@ -165,7 +165,44 @@ namespace Robot.Database
             return sur;
         }
 
-        public List<SuviviorViewModel> Nonsurvivors()
+        public Report SurvivorCount()
+        {
+            try 
+            {
+                Report report = null;
+                using (SqlConnection connection = new SqlConnection(Config.AppSettings.DefaultConnection))
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand("[dbo].[Percentage] ", connection))
+                    {
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                 report = new Report()
+                                {
+                                    Allpeople = (int)reader["Allcount"],
+                                    AllSurvivor = (int)reader["Survivor"],
+                                    AllNonSurvivor = (int)reader["NonSurvivor"]
+
+                                };
+
+                            }
+                        }
+                    }
+                }
+                return report;
+            
+            }catch(Exception ex)
+            {
+                Log.Error($" {ex}");
+            }
+            return null;
+
+
+        }
+
+            public List<SuviviorViewModel> Nonsurvivors()
         {
             List<SuviviorViewModel> sur = new List<SuviviorViewModel>();
 
@@ -175,7 +212,7 @@ namespace Robot.Database
                 using (SqlConnection connection = new SqlConnection(Config.AppSettings.DefaultConnection))
                 {
                     connection.Open();
-                    using (SqlCommand command = new SqlCommand("dbo].[AllNonSurvivors]", connection))
+                    using (SqlCommand command = new SqlCommand("[dbo].[AllNonSurvivors]", connection))
                     {
                         using (SqlDataReader reader = command.ExecuteReader())
                         {

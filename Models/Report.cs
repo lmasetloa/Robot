@@ -2,8 +2,9 @@
 {
     public class Report
     {
-        public Robots Robot { get; set; }
-        public Survivor Survivor { get; set; }
+        public int AllSurvivor { get; set; }
+        public int AllNonSurvivor { get; set; }
 
+        public int Allpeople { get; set; }
     }
 }

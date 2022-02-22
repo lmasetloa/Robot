@@ -7,5 +7,6 @@ namespace Robot.Serivces
     {
         public List<SuviviorViewModel> survivors();
         public List<SuviviorViewModel> Nonsurvivors();
+        public SurvivorsPerc roportPerc();
     }
 }

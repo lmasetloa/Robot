@@ -39,15 +39,13 @@ namespace Robot.Controllers
         {
             return _reportingService.Nonsurvivors();
         }
-
-        // GET api/<ReportingController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet]
+        public SurvivorsPerc AllPercent()
         {
-            return "value";
+            return _reportingService.roportPerc();
         }
 
-        // POST api/<ReportingController>
-      
+
+
     }
 }

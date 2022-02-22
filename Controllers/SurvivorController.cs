@@ -27,9 +27,9 @@ namespace Robot.Controllers
 
         // PUT api/<HomeController>/5
         [HttpPut("{Id}")]
-        public string Put(string id, Location location)
+        public string Put(int Id, Location location)
         {
-           bool update = _SurvivorSerivces1.updateLocation(id, location);
+           bool update = _SurvivorSerivces1.updateLocation(Id, location);
             if (update)
             {
                 return "Location has been updated";

@@ -27,9 +27,9 @@ namespace Robot.Serivces
             return results;
         }
 
-        public bool updateLocation(string IDnumber, Location location)
+        public bool updateLocation(int ID, Location location)
         {
-            bool update = _sQLQuery.updateLocation(IDnumber,  location);
+            bool update = _sQLQuery.updateLocation(ID,  location);
             return update;
         }
               
